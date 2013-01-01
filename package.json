@@ -32,7 +32,7 @@
     "lib"
   ],
   "dependencies": {
-    "esprima": "1.1.0"
+    "esprima": "1.0.2"
   },
   "devDependencies": {
     "jasmine-node": "1.0.x"
