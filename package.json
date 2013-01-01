@@ -1,0 +1,47 @@
+{
+  "name": "esvalidate",
+  "version": "0.0.1",
+  "description": "A CLI for esvalidate",
+  "homepage": "http://github.com/duereg/esvalidate",
+  "author": {
+    "name": "Matt Blair",
+    "email": "matt.blair.dev@hotmail.com",
+    "url": "http://github.com/duereg"
+  },
+  "engines": {
+      "node": ">=0.4.0"
+  },
+  "maintainers": [{
+      "name": "Matt Blair",
+      "email": "matt.blair.dev@hotmail.com",
+      "web": "http://codetype.wordpress.com"
+  }],
+  "repository": {
+      "type": "git",
+      "url": "http://github.com/duereg/esvalidate.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "main": "esvalidate",
+  "files": [
+    "README.md",
+    "lib"
+  ],
+  "dependencies": {
+    "esprima": "1.1.0"
+  },
+  "devDependencies": {
+    "jasmine-node": "1.0.x"
+  },
+  "preferGlobal": true,
+  "readme": "# esvalidate\n\nA command line interface and npm package for ESValidate - a JavaScript validator using Esprima.\n\n## Install\n\nTo use esvalidate from any location (for npm v1.x) you need to install using the global (-g) flag.\n\n    npm install -g esvalidate\n\n## Usage\n\n    esvalidate -h\n\nYou can also require ESValidate itself as a module.\n\n    var esvalidate = require('esvalidate');\n\nNote: If you are using npm v1.x be sure to install esvalidate locally (without the -g flag) or link it globally.\n\n## Text Editor Plugins\n\n* [sublime-esvalidate](https://github.com/duereg/sublime-jsvalidate) - `CTRL-SHIFT-V` on any .js file.\n\n## Custom Reporters\n\nSpecify a custom reporter module (see example/reporter.js).\n\n    --reporter path/to/reporter.js\n",
+  "_id": "esvalidate@0.0.1",
+  "dist": {
+    "shasum": "1e0bcf817550f9e2b70cf8d8d28d6ed90ade4ef2"
+  },
+  "_from": "esvalidate"
+}
