@@ -78,12 +78,12 @@ if (typeof esprima === 'undefined') {
     if (typeof phantom === 'object') {
         fs = require('fs');
         system = require('system');
-        esprima = tryGet(require, './esprima', '../esprima');
+        esprima = tryGet(require, './esprima', 'node_modules/esprima/esprima');
     } else if (typeof require === 'function') {
         fs = require('fs');
-        esprima = tryGet(require, 'esprima', './esprima.js', '../esprima.js');
+        esprima = tryGet(require, 'esprima', './esprima.js', 'node_modules/esprima/esprima.js');
     } else if (typeof load === 'function') {
-        tryGet(load, 'esprima.js', '../esprima.js');
+        tryGet(load, 'esprima.js', 'node_modules/esprima/esprima.js');
     }
 }
 
