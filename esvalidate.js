@@ -50,6 +50,7 @@ function tryGet(method) {
         path = args.splice(1, 1)[0];
 
         try {
+            log(path);
             valueToGet = method(path);
         } catch (e) {
             return tryGet.apply(this, args);
@@ -158,7 +159,7 @@ if (options.format.slice(options.format.length - 3).toLowerCase() !== '.js') {
     options.format = options.format + '.js';
 }
 
-var tempFormatter = tryGetDependency('bin/' + options.format, options.format, './' + options.format);
+var tempFormatter = tryGetDependency('formats/' + options.format, options.format, './' + options.format);
 
 if (!formatter && tempFormatter) {
     formatter = tempFormatter;
