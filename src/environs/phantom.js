@@ -35,7 +35,7 @@ system = require('system');
 // Shims to Node.js objects when running under PhantomJS 1.7+.
 fs.readFileSync = fs.read;
 process = {
-    argv: [].slice.call(system.args),
-    exit: phantom.exit
+  argv: [].slice.call(system.args),
+  exit: phantom.exit
 };
 process.argv.unshift('phantomjs');
