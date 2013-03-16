@@ -1,110 +1,22 @@
-#!/usr/bin/env node
-/*
-  Copyright (C) 2012 Ariya Hidayat <ariya.hidayat@gmail.com>
+var options, fnames, count, formatter, dieLoudly, formatter;
 
-  Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions are met:
-
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
-
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-  ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
-  DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
-  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
-/*jslint sloppy:true plusplus:true node:true rhino:true */
-/*global phantom:true */
-
-var fs, system, esprima, options, fnames, count, formatter, dieLoudly, log, formatter;
-
-//shims console & print to generic 'log' method
-if ((log === undefined) && (typeof console !== 'undefined') && (typeof console.log === 'function')) {
-    log = console.log;
-}
-
-if ((log === undefined) && (typeof print === 'function')) {
-    log = print;
-}
-
-if (log === undefined) {
-    throw "Cannot find system to write output to.";
-}
-
-function tryGet(method) {
+function tryGet() {
     var args = [].slice.apply(arguments),
         valueToGet = null,
         path = null;
 
-    if (args.length > 1) {
-        path = args.splice(1, 1)[0];
+    if (args.length) {
+        path = args.splice(0, 1)[0];
 
         try {
             log(path);
-            valueToGet = method(path);
+            valueToGet = require(path);
         } catch (e) {
             log(e);
             return tryGet.apply(this, args);
         }
     }
     return valueToGet;
-}
-
-function tryGetDependency() {
-    var method, args = null;
-
-    if (typeof require === 'function') {
-        method = require;
-    } else {
-        method = load;
-    }
-
-    args = [].slice.apply(arguments);
-    args.unshift(method);
-
-    return tryGet.apply(this, args);
-}
-
-if (typeof esprima === 'undefined') {
-    // PhantomJS can only require() relative files
-    if (typeof phantom === 'object') {
-        fs = require('fs');
-        system = require('system');
-        esprima = tryGet(require, './esprima', 'node_modules/esprima/esprima');
-    } else if (typeof require === 'function') {
-        fs = require('fs');
-        esprima = tryGet(require, 'esprima', './esprima.js', 'node_modules/esprima/esprima.js');
-    } else if (typeof load === 'function') {
-        tryGet(load, 'esprima.js', 'node_modules/esprima/esprima.js');
-    }
-}
-
-// Shims to Node.js objects when running under PhantomJS 1.7+.
-if (typeof phantom === 'object') {
-    fs.readFileSync = fs.read;
-    process = {
-        argv: [].slice.call(system.args),
-        exit: phantom.exit
-    };
-    process.argv.unshift('phantomjs');
-}
-
-// Shims to Node.js objects when running under Rhino.
-if (typeof process === 'undefined') {
-    fs = { readFileSync: readFile };
-    process = { argv: arguments, exit: quit };
-    process.argv.unshift('esvalidate.js');
-    process.argv.unshift('rhino');
 }
 
 function showUsage() {
@@ -160,7 +72,7 @@ if (options.format.slice(options.format.length - 3).toLowerCase() !== '.js') {
     options.format = options.format + '.js';
 }
 
-var tempFormatter = tryGetDependency('./formats/' + options.format, options.format, './' + options.format);
+var tempFormatter = tryGet('../formats/' + options.format, options.format, './' + options.format);
 
 if (!formatter && tempFormatter) {
     formatter = tempFormatter;
