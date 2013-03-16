@@ -39,7 +39,6 @@
     "esprima": "1.0.2"
   },
   "devDependencies": {
-    "jasmine-node": "1.0.x",
     "browserify":   "1.16.1",
     "shelljs":      "0.1.x",
     "jshint":       "1.10.0"
