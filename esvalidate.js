@@ -1,6 +1,10 @@
+/*global log:true esprima:true fs:true */
+
 var options, fnames, count, formatter, dieLoudly, formatter;
 
 function tryGet() {
+  'use strict';
+
   var args = [].slice.apply(arguments),
       valueToGet = null,
       path = null;

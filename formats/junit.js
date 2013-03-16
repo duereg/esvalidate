@@ -23,9 +23,6 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/*jslint sloppy:true plusplus:true node:true rhino:true */
-/*global phantom:true */
-
 var formatter;
 
 (function () {
@@ -47,13 +44,14 @@ var formatter;
         var errorMsg = error.Message;
 
         if (errorType === "SyntaxError") {
-            errorMsg = error.message;
-            errorMsg = 'Line ' + error.lineNumber + ': ' + errorMsg.replace(removeLineNumRegEx, '');
+          errorMsg = error.message;
+          errorMsg = 'Line ' + error.lineNumber + ': ' + errorMsg.replace(removeLineNumRegEx, '');
         }
 
         log('  <testcase name="' + errorMsg + '" ' + ' time="0">');
         log('    <error type="' + errorType + '" message="' + error.message + '">' +
-                      error.message + '(' + fileName + ':' + ((error.lineNumber) ? ':' + error.lineNumber : '') + ')</error>');
+            error.message + '(' + fileName + ':' + ((error.lineNumber) ? ':' + 
+            error.lineNumber : '') + ')</error>');
         log('  </testcase>');
       },
       endSection: function () {

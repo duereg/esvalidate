@@ -24,7 +24,6 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/*jslint sloppy:true plusplus:true node:true rhino:true */
 /*global phantom:true */
 
 var fs, system, process;

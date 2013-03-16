@@ -23,9 +23,6 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/*jslint sloppy:true plusplus:true node:true rhino:true */
-/*global phantom:true */
-
 var formatter;
 
 (function () {
@@ -35,7 +32,7 @@ var formatter;
   formatter = function (log) {
     return {
       startLog: function () { },
-      startSection: function (fileName, errors, failures, tests, time) { },
+      startSection: function () { },
       writeError: function (fileName, error, errorType) {
         var msg = error.message;
         msg = msg.replace(removeLineNumRegEx, '');

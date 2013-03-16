@@ -24,8 +24,6 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/*jslint sloppy:true plusplus:true node:true */
-
 var fs; 
 
 fs = require('fs');

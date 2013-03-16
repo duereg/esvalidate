@@ -24,6 +24,6 @@ Note: If you are using npm v1.x be sure to install esvalidate locally (without t
 
 ## Custom Reporters
 
-Specify a custom reporter module (see example/reporter.js).
+Specify a custom formatter module (see formats/junit.js).
 
-    --reporter path/to/reporter.js
+    --formatter path/to/format.js

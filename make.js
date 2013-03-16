@@ -5,6 +5,8 @@
 
 require("shelljs/make");
 
+var OPTIONS = JSON.parse(cat("./jshint.json"));
+
 function createExec(filename, contents) {
 
   var fullPathToFile = "./bin/" + filename;
@@ -13,6 +15,54 @@ function createExec(filename, contents) {
 
   echo("node - " + filename);
 }
+
+target.lint = function () {
+  var jshint = require("jshint").JSHINT;
+  var files = find("formats")
+    .filter(function (file) {
+      return file.match(/\.js$/);
+    });
+
+  echo("Linting files...", "\n");
+
+  var failures = {};
+  files.forEach(function (file) {
+    var passed = jshint(cat(file), OPTIONS);
+    process.stdout.write(passed ? "." : "F");
+
+    if (!passed) {
+      failures[file] = jshint.data();
+    }
+  });
+
+  echo("\n");
+
+  if (Object.keys(failures).length === 0) {
+    echo("All files passed.");
+    return;
+  }
+
+  var outputError = function (err) {
+    if (!err) {
+      return;
+    }
+
+    var line = "[L" + err.line + "]";
+    while (line.length < 10) {
+      line += " ";
+    }
+
+    echo(line, err.reason);
+    echo("\n");
+  };
+
+  for (var key in failures) {
+    echo(key);
+    failures[key].errors.forEach(outputError);
+  }
+
+  exit(1);
+};
 
 target.build = function () {
   if (exec('npm install').code !== 0) {
