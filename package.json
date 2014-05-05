@@ -7,16 +7,16 @@
   "bugs": "http://github.com/duereg/esvalidate/issues",
   "author": {
     "name": "Matt Blair",
-    "email": "matt.blair.dev@hotmail.com",
-    "url": "http://github.com/duereg"
+    "email": "matt@mattblair.co",
+    "url": "http://duereg.github.io"
   },
   "engines": {
       "node": ">=0.4.0"
   },
   "maintainers": [{
       "name": "Matt Blair",
-      "email": "matt.blair.dev@hotmail.com",
-      "web": "http://codetype.wordpress.com"
+      "email": "matt@mattblair.co",
+      "web": "http://duereg.github.io"
   }],
   "repository": {
       "type": "git",
