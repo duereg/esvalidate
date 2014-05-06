@@ -2,7 +2,7 @@
 [![Dependencies](https://david-dm.org/duereg/esvalidate.png)](https://david-dm.org/duereg/esvalidate)
 [![devDependencies](https://david-dm.org/duereg/esvalidate/dev-status.png)](https://david-dm.org/duereg/esvalidate#info=devDependencies&view=table)
 
-# esvalidate
+# ESValidate
 
 A command line interface and npm package for ESValidate - a JavaScript validator using Esprima.
 
