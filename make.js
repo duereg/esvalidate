@@ -88,16 +88,16 @@ target.build = function () {
     bundle.bundle()
   ].join("\n");
 
-  var esvalidate = [log, esprima, cat("./esvalidate.js")].join("\n"); 
+  var esvalidate = [log, esprima, cat("./esvalidate.js")].join("\n");
   var node = cat("./src/environs/node.js");
 
   createExec("esvalidate", [node, esvalidate]);
 
   var rhino = cat("./src/environs/rhino.js");
-  
+
   createExec("rhino-esvalidate", [rhino, esvalidate]);
 
   var phantom = cat("./src/environs/phantom.js");
-  
+
   createExec("phantom-esvalidate", [phantom, esvalidate]);
 };
