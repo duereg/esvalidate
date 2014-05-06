@@ -32,7 +32,8 @@
     "esvalidate": "./bin/esvalidate"
   },
   "scripts": {
-    "lint": "node ./make.js lint"
+    "lint": "node ./make.js lint",
+    "build": "node ./make.js"
   },
   "main": "esvalidate.js",
   "dependencies": {
