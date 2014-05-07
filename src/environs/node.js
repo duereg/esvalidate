@@ -24,6 +24,6 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-var fs; 
+var fs;
 
 fs = require('fs');
