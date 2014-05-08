@@ -20,12 +20,8 @@ var formatter;
     return {
       startLog: function () { },
       startSection: function (fileName, errors, failures) {
-        log("[esvalidate file:" + fileName + "]");
+        log("[esvalidate " + fileName + "]");
         errors = errors + failures;
-
-        if (errors > 0) {
-          log(errors + " Error" + (errors > 1 ? "s" : "") + ":");
-        }
       },
       writeError: function (fileName, error) {
         var msg = error.message;
