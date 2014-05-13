@@ -4,7 +4,7 @@ var formatter;
   'use strict';
   var removeLineNumRegEx = /^Line\ [0-9]*\:\ /;
 
-  formatter =  function (log) {
+  formatter = function (log) {
     return {
       startLog: function () {
         log('<?xml version="1.0" encoding="UTF-8"?>');
@@ -25,7 +25,7 @@ var formatter;
 
         log('  <testcase name="' + errorMsg + '" ' + ' time="0">');
         log('    <error type="' + errorType + '" message="' + error.message + '">' +
-            error.message + '(' + fileName + ':' + ((error.lineNumber) ? ':' + 
+            error.message + '(' + fileName + ':' + ((error.lineNumber) ? ':' +
             error.lineNumber : '') + ')</error>');
         log('  </testcase>');
       },

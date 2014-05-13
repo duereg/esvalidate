@@ -33,7 +33,13 @@ var formatter;
           log(msg);
         }
       },
-      endSection: function () { },
+      endSection: function (errors, failures) {
+        var numErrors = errors + failures;
+
+        if (numErrors > 0) {
+          log('[✗ ' + numErrors + ', double-click above, [F4] for next, [shift-F4] for previous.]');
+        }
+      },
       endLog: function () { }
     };
   };
