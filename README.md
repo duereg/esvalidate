@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/duereg/esvalidate.png)](https://travis-ci.org/duereg/esvalidate)
-[![Dependencies](https://david-dm.org/duereg/esvalidate.png)](https://david-dm.org/duereg/esvalidate)
-[![devDependencies](https://david-dm.org/duereg/esvalidate/dev-status.png)](https://david-dm.org/duereg/esvalidate#info=devDependencies&view=table)
+[![Build Status](https://travis-ci.org/duereg/esvalidate.svg)](https://travis-ci.org/duereg/esvalidate)
+[![Dependencies](https://david-dm.org/duereg/esvalidate.svg)](https://david-dm.org/duereg/esvalidate)
+[![devDependencies](https://david-dm.org/duereg/esvalidate/dev-status.svg)](https://david-dm.org/duereg/esvalidate#info=devDependencies&view=table)
 [![NPM version](https://badge.fury.io/js/esvalidate.svg)](http://badge.fury.io/js/esvalidate)
 
 
